@@ -12,6 +12,11 @@ public class DemoController {
     // define um campo privado para a dependencia
     private Coach myCoach;
 
+    @Autowired
+    public void setCoach(Coach theCoach){
+        myCoach = theCoach;
+    }
+
     @GetMapping("/dailyworkout")
     public String getDailyWorkout(){
         return myCoach.getDailyWorkout();
