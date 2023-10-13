@@ -18,8 +18,24 @@ public class CruddemoApplication {
   public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
     return runner -> {
       // createStudent(studentDAO);
-      createMultipleStudents(studentDAO);
+      
+      // createMultipleStudents(studentDAO);
+
+      readStudent(studentDAO);
     };
+  }
+
+  private void readStudent(StudentDAO studentDAO) {
+
+    // create a student object
+
+    // save the student
+
+    // display id of the saved student
+
+    // retrieve student based on the id: primary key
+
+    // display student
   }
 
   private void createMultipleStudents(StudentDAO studentDAO) {
