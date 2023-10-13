@@ -1,12 +1,11 @@
 package com.luv2code.cruddemo;
 
+import com.luv2code.cruddemo.dao.StudentDAO;
+import com.luv2code.cruddemo.entity.Student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import com.luv2code.cruddemo.dao.StudentDAO;
-import com.luv2code.cruddemo.entity.Student;
 
 @SpringBootApplication
 public class CruddemoApplication {
@@ -18,8 +17,24 @@ public class CruddemoApplication {
   @Bean
   public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
     return runner -> {
-      createStudent(studentDAO);
+      // createStudent(studentDAO);
+      createMultipleStudents(studentDAO);
     };
+  }
+
+  private void createMultipleStudents(StudentDAO studentDAO) {
+
+    // create multiple students
+    System.out.println("Creating new student object ...");
+    Student tempStudent1 = new Student("Joao", "de Tal", "joao@luv2code.com");
+    Student tempStudent2 = new Student("Maria", "Publica", "maria@luv2code.com");
+    Student tempStudent3 = new Student("Bonita", "Applebum", "bonita@luv2code.com");
+
+    // save the student objects
+    System.out.println("Saving the students ...");
+    studentDAO.save(tempStudent1);
+    studentDAO.save(tempStudent2);
+    studentDAO.save(tempStudent3);
   }
 
   private void createStudent(StudentDAO studentDAO) {
@@ -32,6 +47,6 @@ public class CruddemoApplication {
     studentDAO.save(tempStudent);
 
     // display id of the saved student
-    System.out.println("Saved student. Generated id: "+ tempStudent.getId());
+    System.out.println("Saved student. Generated id: " + tempStudent.getId());
   }
 }
